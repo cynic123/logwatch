@@ -68,8 +68,8 @@ class LogListener extends EventEmitter {
             else break;
           newLines.push(line);
         }
-      
       this.updateProperties(newLines);
+      console.log(this.logBuffer);
     } finally {
       fileHandle?.close();
     }
