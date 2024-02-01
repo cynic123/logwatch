@@ -1,0 +1,22 @@
+extends layout
+block content
+  h2 Welcome to #{title}!
+  p Use path like <a href='/log'>#{body}</a>
+
+  // Initially hide the loading div
+  div#loading(style='display: none;') Loading...
+
+  div#log
+
+  script(src='/javascripts/sseHandler.js')
+  script.
+    if (window.location.pathname === '/log') {
+      // Show the loading div only on the /log route
+      document.getElementById('loading').style.display = 'block';
+
+      // Hide the welcome message and link
+      document.querySelector('h2').style.display = 'none';
+      document.querySelector('p').style.display = 'none';
+
+      initializeSSE();
+    }
